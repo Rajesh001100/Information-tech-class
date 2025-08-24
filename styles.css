@@ -1,0 +1,414 @@
+/* General styles */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0d0d0d;
+    color: white;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Canvas background */
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Navigation bar */
+nav#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 2px 8px rgba(0, 255, 255, 0.5);
+    z-index: 10;
+}
+
+nav#navbar button {
+    background: none;
+    border: none;
+    color: #0ff;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+nav#navbar button:hover,
+nav#navbar button.active {
+    background-color: #0ff;
+    color: #000;
+}
+
+/* Login container */
+#login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 20px;
+    width: 360px;
+    padding: 50px 35px;
+    z-index: 5;
+    text-align: center;
+}
+
+#login-container h1 {
+    color: #0ff;
+    margin-bottom: 25px;
+    font-family: monospace;
+}
+
+.input-group {
+    position: relative;
+    margin: 12px 0;
+    text-align: left;
+}
+
+.input-group i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0ff;
+    opacity: 0.7;
+}
+
+
+#login-container input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1rem;
+}
+
+#login-container input::placeholder {
+    color: #ccc;
+}
+
+#login-container button {
+    width: 100%;
+    padding: 12px;
+    background: #0ff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    color: #0d0d0d;
+    transition: 0.3s;
+}
+
+#login-container button:hover {
+    background: #00cccc;
+}
+
+#error {
+    color: #ff5555;
+    margin-top: 10px;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+/* Dashboard container */
+#dashboard {
+    position: relative;
+    z-index: 1;
+    padding: 70px 30px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Sections */
+section {
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+section.active {
+    display: block;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Section titles */
+h2 {
+    color: #0ff;
+    font-family: monospace;
+    margin-bottom: 15px;
+}
+
+/* Students grid */
+.student-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.student-card-mini {
+    border: 2px solid #0ff;
+    border-radius: 15px;
+    background: #eef2f4;
+    padding: 18px 8px 18px 8px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
+    color: #111;
+    cursor: default;
+}
+
+.student-card-mini img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    margin-bottom: 8px;
+    border: 2px solid #ddd;
+}
+
+.student-card-mini .stu-name {
+    font-weight: 700;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.student-card-mini .stu-reg,
+.student-card-mini .stu-dob {
+    font-weight: 600;
+    font-size: 0.95em;
+    color: #018888;
+    margin-bottom: 6px;
+}
+
+.student-card-mini .stu-desc {
+    color: #444;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/* Photo gallery grid */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.photo-card {
+    position: relative;
+    border: 2px solid #0ff;
+    border-radius: 15px;
+    background: #181b22;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 110px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-card .delete-btn {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: rgba(255, 0, 0, 0.8);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 3px 8px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.photo-card .delete-btn:hover {
+    opacity: 1;
+}
+
+.photo-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #0ff;
+    z-index: 3;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #0ff;
+    position: relative;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-caption {
+    text-align: center;
+    margin: 10px 0;
+    color: #0ff;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 2.5rem;
+    color: #0ff;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+/* Other UI styles */
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    resize: vertical;
+}
+
+button {
+    background: #0ff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: #00cccc;
+}
+
+#chatBox {
+    max-height: 320px;
+    overflow-y: auto;
+    background: #111;
+    margin-top: 10px;
+    border-radius: 12px;
+    padding: 10px;
+    color: #eee;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+}
+
+/* Class Info styling */
+#classInfoContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0f7fa;
+    line-height: 1.6;
+}
+
+#classInfoContainer h3 {
+    color: #00ffc8;
+    font-size: 1.8rem;
+    margin-bottom: 0.3em;
+}
+
+#classInfoContainer h4 {
+    color: #00d4aa;
+    font-size: 1.4rem;
+    margin-top: 0;
+}
+
+#classInfoContainer p {
+    font-size: 1.2rem;
+    margin: 0.8em 0;
+    color: #b2dfdb;
+}
+
+#classInfoContainer strong {
+    color: #1de9b6;
+}
+
+#classInfoTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    color: #b2dfdb;
+    margin-top: 1em;
+    text-align: center;
+}
+
+#classInfoTable thead tr {
+    background-color: #004d40;
+}
+
+#classInfoTable td,
+#classInfoTable th {
+    border: 1px solid #00bfa5;
+    padding: 8px;
+}
